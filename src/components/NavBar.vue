@@ -1,9 +1,9 @@
 <template>
   <v-app-bar app class="elevation-1 border">
-    <v-row class="w-100 d-flex align-center px-5 ga-1 justify-space-between">
-      <v-col cols="auto" class="d-flex flex-row align-center">
+    <v-row class="w-100 d-flex align-center ga-1 justify-space-between" :class="isMobile ? 'px-2' : 'px-5'">
+      <v-col cols="6" md="auto" lg="auto" class="d-flex flex-row align-center">
         <div class="google-logo-anim d-flex align-center">
-          <svg viewBox="0 0 120 40" width="120" height="40">
+          <svg viewBox="0 0 120 40" :width="isMobile ? 100 : 120" height="40">
             <g class="dots">
               <circle cx="18" cy="20" r="4" class="dot blue" />
               <circle cx="34" cy="20" r="4" class="dot red" />
@@ -13,37 +13,40 @@
           </svg>
         </div>
 
-        <span class="" style="color: #111827; font-weight: 600; font-size: 18px"
+        <span v-if="!isMobile"  style="color: #111827; font-weight: 600; font-size: 18px;"
           >Google Cloud Arcade 2026</span
+        >
+        <span v-if="isMobile" style="color: #111827; font-weight: 600; font-size: 12px;"
+          >Google Cloud <br>Arcade 2026</span
         >
       </v-col>
       <v-spacer></v-spacer>
-      <v-col cols="auto" >
+      <v-col cols="auto"  v-if="!isMobile">
         <v-btn to="#home" class="header-link">
           <span class="text-btn">Início</span>
         </v-btn>
       </v-col>
-      <v-col cols="auto" >
+      <v-col cols="auto" v-if="!isMobile">
         <v-btn to="#about" class="header-link">
           <span class="text-btn">Sobre</span>
         </v-btn>
       </v-col>
-      <v-col cols="auto" >
+      <v-col cols="auto" v-if="!isMobile">
         <v-btn to="#squad" class="header-link">
           <span class="text-btn">Squad</span>
         </v-btn>
       </v-col>
-      <v-col cols="auto" >
+      <v-col cols="auto" v-if="!isMobile">
         <v-btn to="#facilitator" class="header-link">
           <span class="text-btn">Facilitador</span>
         </v-btn>
       </v-col>
-      <v-col cols="auto">
+      <v-col cols="auto" v-if="!isMobile">
         <v-btn to="#tutorial" class="header-link">
           <span class="text-btn">Tutorial</span>
         </v-btn>
       </v-col>
-      <v-col cols="auto">
+      <v-col cols="5" md="auto" lg="auto" class="">
         <v-btn
           size="small"
           class="text-white d-flex align-center rounded-lg btn-filled btn-filled-dark pa-4"
@@ -57,6 +60,26 @@
     </v-row>
   </v-app-bar>
 </template>
+
+<script>
+import { useDisplay } from "vuetify";
+
+export default {
+  data: () => ({
+smAndDown: false,
+  }),
+  computed: {
+    isMobile() {
+      console.log("SMANDOWN: ", this.smAndDown);
+      return this.smAndDown;
+    },
+  },
+  mounted() {
+    const display = useDisplay();
+    this.smAndDown = display.smAndDown;
+  },
+}
+</script>
 
 <style scoped>
 .google-logo-anim svg {

@@ -1,9 +1,19 @@
 <script>
+import { useDisplay } from "vuetify";
+
 export default {
   data: () => ({
     showCopyAlert: false,
     collapsed: false,
+    smAndDown: false,
   }),
+
+  computed: {
+    isMobile() {
+      console.log("SMANDOWN: ", this.smAndDown);
+      return this.smAndDown;
+    },
+  },
 
   methods: {
     copyFacilitatorCode() {
@@ -40,10 +50,17 @@ export default {
       })
     },
   },
+
+  mounted() {
+    const display = useDisplay();
+    this.smAndDown = display.smAndDown;
+  },
 }
 </script>
 
 <template>
+
+  <!-- HOME -->
   <v-container class="d-flex flex-column justify-center py-16" id="home">
     <v-row class="d-flex justify-center py-16">
       <v-col cols="12" class="d-flex justify-center align-center flex-row">
@@ -53,9 +70,9 @@ export default {
           >Temporada 2026 aberta</span
         >
       </v-col>
-      <v-col cols="12" class="d-flex align-center flex-column">
-        <span class="text-body-title" style="color: #111827">Aprenda a Nuvem com o</span>
-        <span class="text-body-title google-gradient-text pb-2"> Google Cloud Arcade </span>
+      <v-col cols="12" class="d-flex align-center flex-column" :class="isMobile ? 'text-center' : 'text-start'">
+        <span :class="isMobile ? 'text-body-title-mobile' : 'text-body-title'" style="color: #111827">Aprenda a Nuvem com o</span>
+        <span :class="isMobile ? 'text-body-title-mobile' : 'text-body-title'" class="google-gradient-text pb-2"> Google Cloud Arcade </span>
       </v-col>
       <v-col cols="12" class="d-flex justify-center">
         <span class="hero-text">
@@ -63,7 +80,7 @@ export default {
           Conquiste badges, acumule pontos e junte-se à vanguarda da <br />tecnologia.
         </span>
       </v-col>
-      <v-col cols="auto" class="d-flex justify-center">
+      <v-col cols="auto" md="auto" lg="auto" class="d-flex justify-center">
         <v-btn
           width="194px"
           height="50px"
@@ -90,14 +107,16 @@ export default {
         </v-btn>
       </v-col>
     </v-row>
+
+    <!-- SOBRE -->
     <v-row class="pt-16 mt-16 px-4 d-flex">
-      <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
-        <span class="text-section-title" style="color: #111827">Experiência Imersiva</span>
+      <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10" :class="isMobile ? 'text-center' : 'text-start'">
+        <span :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Experiência Imersiva</span>
         <span style="color: #6b7280; font-size: 16px"
           >O que esperar da sua jornada no Arcade 2026
         </span>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3" lg="3">
         <div class="pa-8 rounded-xl cards d-flex flex-column ga-6">
           <div class="icon-box">
             <Icon width="32px" icon="twemoji:video-game"></Icon>
@@ -110,7 +129,7 @@ export default {
           </div>
         </div>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3" lg="3">
         <div class="pa-8 rounded-xl cards d-flex flex-column ga-6">
           <div class="icon-box">
             <Icon width="32px" icon="twemoji:handshake"></Icon>
@@ -123,7 +142,7 @@ export default {
           </div>
         </div>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3" lg="3">
         <div class="pa-8 rounded-xl cards d-flex flex-column ga-6">
           <div class="icon-box">
             <Icon color="#00b1ff" width="32px" icon="tabler:diamond-filled"></Icon>
@@ -134,7 +153,7 @@ export default {
           </div>
         </div>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3" lg="3">
         <div class="pa-8 rounded-xl cards d-flex flex-column ga-6">
           <div class="icon-box">
             <Icon width="32px" icon="fluent-emoji-flat:rocket"></Icon>
@@ -149,15 +168,17 @@ export default {
       </v-col>
     </v-row>
   </v-container>
+
+  <!-- SOBRE - GOOGLE SKILLS E SOULCODE -->
   <v-container class="" fluid style="background-color: #f6f8fa" id="about">
     <v-row class="pt-16 d-flex justify-center">
       <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
-        <span class="text-section-title" style="color: #111827">Ecossistema de Elite</span>
+        <span :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Ecossistema de Elite</span>
         <span class="text-center" style="color: #6b7280; font-size: 16px; line-height: 1.5"
           >A união entre a infraestrutura do Google e a excelência educacional da <br />SoulCode.
         </span>
       </v-col>
-      <v-col cols="6">
+      <v-col cols="12" md="6" lg="6">
         <div class="rounded-xl bg-white pa-8 skills-card">
           <v-row class="d-flex align-center">
             <v-col cols="auto">
@@ -173,32 +194,32 @@ export default {
               >
             </v-col>
             <v-col cols="12">
-              <span class="text-card-title-lg">Google Skill Boost</span>
+              <span :class="isMobile ? 'text-card-title-mobile' : 'text-card-title-lg'">Google Skills Boost</span>
             </v-col>
             <v-col cols="12">
-              <span class="card-description-base" style="text-align: justify">
-                Antigo Qwiklabs, o Skills Boost é o portal definitivo de treinamento prático.<br />Aqui
+              <span :class="isMobile ? 'card-description-mobile' : 'card-description-base'" style="text-align: justify">
+                Antigo Qwiklabs, o Skills Boost é o portal definitivo de treinamento prático. Aqui
                 você não apenas lê, você <strong>executa</strong> em ambientes reais do Google
-                Cloud<br />
-                Console, ganhando experiência com ferramentas como Kubernetes,<br />BigQuery e AI
+                Cloud
+                Console, ganhando experiência com ferramentas como Kubernetes, BigQuery e AI
                 Generativa.
               </span>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="12" md="4" lg="4">
               <div class="metric-card pa-4 py-5 ga-1">
                 <span class="metric-card-title">Hands-on Labs</span>
                 <span class="metric-card-value">700+</span>
                 <span class="text-meta-sm" style="color: #6b7280">Cenários reais</span>
               </div>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="12" md="4" lg="4">
               <div class="metric-card pa-4 py-5 ga-1">
                 <span class="metric-card-title">Skill Badges</span>
                 <span class="metric-card-value">Quest-based</span>
                 <span class="text-meta-sm" style="color: #6b7280">Prova de Habilidade</span>
               </div>
             </v-col>
-            <v-col cols="4">
+            <v-col cols="12" md="4" lg="4">
               <div class="metric-card pa-4 py-5 ga-1">
                 <span class="metric-card-title">Cloud Console</span>
                 <span class="metric-card-value">Sanbox</span>
@@ -223,7 +244,7 @@ export default {
         </div>
       </v-col>
 
-      <v-col cols="3" class="">
+      <v-col cols="12" class="" md="3" lg="3">
         <div class="partner-card px-8 py-8 d-flex flex-column justify-space-between">
           <v-row>
             <v-col cols="auto">
@@ -236,7 +257,7 @@ export default {
               <v-divider style="width: 30px !important" opacity="0.5" color="#ffffff"></v-divider>
             </v-col>
           </v-row>
-          <v-row dense>
+          <v-row :dense="!isMobile" :class="isMobile ? 'pb-5' : ''">
             <v-col cols="12">
               <span class="text-card-title text-white">SoulCode Academy</span>
             </v-col>
@@ -267,9 +288,9 @@ export default {
           </v-row>
         </div>
       </v-col>
-      <v-col cols="4">
-        <div class="pa-8 rounded-xl cards-info d-flex flex-column ga-2">
-          <div class="d-flex align-center ga-4 flex-row">
+      <v-col cols="12" md="4" lg="4">
+        <div class="pa-8 rounded-xl cards-info d-flex flex-column  ga-2">
+          <div class="d-flex align-center ga-4 flex-row" :style="{ maxWidth: isMobile ? '100%' : '70%' }">
             <div style="background-color: #fffbeb; border-radius: 24px; padding: 4px">
               <Icon color="#FACC15" width="25px" icon="duo-icons:lamp"></Icon>
             </div>
@@ -283,10 +304,10 @@ export default {
           </div>
         </div>
       </v-col>
-      <v-col cols="5">
-        <div class="pa-8 rounded-xl cards-info d-flex align-center justify-space-between pb-12">
+      <v-col cols="12" md="5" lg="5">
+        <div class="pa-8 rounded-xl cards-info d-flex align-center justify-space-between pb-12 ga-4" :class="isMobile ? 'flex-column' : ''">
           <!-- CONTAINER: ÍCONE + TÍTULO + DESCRIÇÃO -->
-          <div class="d-flex flex-column ga-1" style="max-width: 70%">
+          <div class="d-flex flex-column ga-1" style="max-width: 70%" :style="{ maxWidth: isMobile ? '100%' : '70%' }">
             <!-- Ícone + Título -->
             <div class="d-flex align-center ga-4">
               <div style="background-color: #ecfdf5; border-radius: 24px; padding: 6px">
@@ -304,7 +325,7 @@ export default {
           </div>
 
           <!-- CONTAINER: CARD SECUNDÁRIO -->
-          <div class="metric-card pa-2 py-3 ga-1 d-flex flex-column align-center">
+          <div  class="metric-card pa-2 py-3 ga-1 d-flex flex-column align-center" :class="isMobile ? 'px-5 py-4' : ''">
             <span class="metric-card-title-md">Salário Médio Cloud</span>
             <span class="metric-card-value-md">R$ 12k+</span>
           </div>
@@ -312,10 +333,12 @@ export default {
       </v-col>
     </v-row>
   </v-container>
+
+  <!-- SQUAD -->
   <v-container id="squad">
     <v-row class="pt-16 d-flex justify-center">
       <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
-        <span class="text-section-title" style="color: #111827">Nimbus Vanguards</span>
+        <span :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Nimbus Vanguards</span>
         <span class="text-center" style="color: #6b7280; font-size: 16px; line-height: 1.5"
           >O squad oficial dos participantes determinados
         </span>
@@ -323,22 +346,22 @@ export default {
     </v-row>
 
     <v-row class="d-flex justify-center">
-      <v-col cols="8">
+      <v-col cols="12" md="8" lg="8">
         <div class="rounded-xl pa-8 guild-card">
           <v-row class="d-flex">
-            <v-col cols="9" class="d-flex flex-column ga-5">
-              <span class="text-card-title-lg text-white">Aprendizado Real, No Seu Ritmo.</span>
-              <span class="card-description-base" style="text-align: justify; color: #9ca3af">
+            <v-col cols="12" md="9"  lg="9" class="d-flex flex-column ga-5">
+              <span class="text-card-title-mobile text-white">Aprendizado Real, No Seu Ritmo.</span>
+              <span class="card-description-mobile" style="text-align: justify; color: #9ca3af">
                 O Nimbus Vanguards é um squad criado para quem quer evoluir no Google Cloud Arcade
                 sem pressão e sem formato engessado. Aqui não tem aula, prova ou cobrança, tem
                 troca, prática, curiosidade e gente se ajudando de verdade.
               </span>
             </v-col>
-            <v-col cols="auto">
+            <v-col cols="auto" v-if="!isMobile">
               <v-icon color="#FFFFFF1A" size="140">mdi-account-multiple-outline</v-icon>
             </v-col>
           </v-row>
-          <v-row style="color: #e5e7eb">
+          <v-row style="color: #e5e7eb" class="">
             <v-col cols="6" class="d-flex align-center ga-1">
               <v-icon color="#3B82F6">mdi-check-circle</v-icon>
               <span>Aprendizado em conjunto</span>
@@ -357,7 +380,7 @@ export default {
               <span>Comunidade ativa</span>
             </v-col>
           </v-row>
-          <v-row>
+          <v-row :class="isMobile ? 'pt-5' : ''">
             <v-col cols="auto">
               <v-btn
                 height="35px"
@@ -377,14 +400,16 @@ export default {
       </v-col>
     </v-row>
   </v-container>
+
+  <!-- FACILITATOR -->
   <v-container fluid style="background-color: #f6f8fa" id="facilitator">
     <v-row class="pt-16 d-flex justify-center">
       <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
-        <span class="text-section-title" style="color: #111827">Quem te Acompanha</span>
+        <span :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Quem te Acompanha</span>
       </v-col>
     </v-row>
     <v-row class="d-flex justify-center">
-      <v-col cols="5" class="d-flex justify-center">
+      <v-col cols="12" md="5"  lg="5" class="d-flex justify-center">
         <div class="facilitator-card">
           <div class="facilitator-avatar-wrapper">
             <img
@@ -419,7 +444,7 @@ export default {
         <img src="@/assets/badge-2.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
 
-      <v-col cols="6" sm="4" md="2" class="badge-col">
+      <v-col v-if="!isMobile" cols="6" sm="4" md="2" class="badge-col">
         <img src="@/assets/certificate.png" alt="Google Cloud Certificate" class="certificate" />
       </v-col>
 
@@ -430,19 +455,25 @@ export default {
       <v-col cols="6" sm="4" md="2" class="badge-col">
         <img src="@/assets/badge-4.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
+
+      <v-col v-if="isMobile" cols="6" sm="4" md="2" class="badge-col">
+        <img src="@/assets/certificate.png" alt="Google Cloud Certificate" class="certificate" />
+      </v-col>
     </v-row>
   </v-container>
+
+  <!-- TUTORIAL - ARCADE -->
   <v-container fluid id="tutorial">
     <v-row class="pt-16 d-flex justify-center">
       <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
-        <span class="text-section-title" style="color: #111827">Guia de Inscrição</span>
+        <span :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Guia de Inscrição</span>
         <span class="text-center" style="color: #6b7280; font-size: 16px; line-height: 1.5"
           >Siga esses 3 passos para participar do programa
         </span>
       </v-col>
     </v-row>
     <v-row class="d-flex justify-center align-start">
-      <v-col cols="4" class="">
+      <v-col cols="12" md="4" lg="4" class="">
         <v-col cols="12" class="">
           <div class="rounded-xl px-8 py-5 tuto-card">
             <v-row dense class="d-flex ga-2 align-center">
@@ -539,7 +570,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
                     >
                   </div>
                   <div class="box-code ga-5">
-                    <span class="text-white">GCAFBR-26-3500</span>
+                    <span class="text-white" :class="isMobile ? 'card-description-base' : ''">GCAFBR-26-3500</span>
                     <v-btn size="small" block @click="copyFacilitatorCode">
                       <span class="text-btn">Copiar Código</span>
                     </v-btn>
@@ -550,11 +581,11 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
           </div>
         </v-col>
       </v-col>
-      <v-col cols="6" class="">
+      <v-col cols="12" md="6"  lg="6" class="">
         <v-col cols="12">
           <img src="@/assets/tuto-1.png" alt="" class="img-tuto-1" />
         </v-col>
-        <v-col cols="8" class="">
+        <v-col cols="12" md="8" lg="8" class="">
           <img src="@/assets/tuto-2.png" class="img-tuto-2" alt="" />
 
           <!-- <div class="tuto-card">
@@ -571,13 +602,17 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
     </v-row>
     <v-row class="d-flex justify-center align-center"> </v-row>
   </v-container>
+
+  <!-- TUTORIAL - GOOGLE SKILLS -->
   <v-container fluid style="background-color: #f6f8fa" class="pb-16">
     <v-row class="pt-16 d-flex justify-center" ref="tutorialGoogle">
       <v-col cols="12" class="d-flex flex-column align-center ga-5 mb-10">
         <div class="d-flex align-center">
-          <span class="text-section-title" style="color: #111827">Configurar Perfil Público</span>
+          <span v-if="!isMobile" :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Configurar Perfil Público</span>
+          <span v-if="isMobile" :class="isMobile ? 'text-section-title-mobile' : 'text-section-title'" style="color: #111827">Configurar Perfil</span>
+
           <v-btn @click="toggle" class="ml-4 pa-0 bg-transparent elevation-0" icon>
-            <v-icon size="50" :class="{ 'rotate-180': !collapsed }" class="transition-transform"
+            <v-icon :size="isMobile ? 30 : 50" :class="{ 'rotate-180': !collapsed }" class="transition-transform"
               >mdi-chevron-down</v-icon
             >
           </v-btn>
@@ -590,7 +625,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
     <v-expand-transition>
       <div v-show="!collapsed" class="overflow-hidden" ref="expandedSection">
         <v-row class="d-flex justify-center align-start" v-show="!collapsed">
-          <v-col cols="4" class="">
+          <v-col cols="12" md="4" lg="4" class="">
             <v-col cols="12" class="">
               <div class="rounded-xl px-8 py-5 tuto-card-2">
                 <v-row dense class="d-flex ga-2 align-center">
@@ -668,17 +703,20 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
               </div>
             </v-col>
           </v-col>
-          <v-col cols="6" class="align-center pa-0">
-            <div class="d-flex align-center">
-              <v-col cols="7" class="">
+          <v-col cols="12" md="6" lg="6" class="align-center pa-0">
+            <div class="d-flex align-center " :class="isMobile ? 'flex-column' : ''">
+              <v-col cols="12" md="7" lg="7" class="">
                 <img src="@/assets/tuto-4.png" alt="" class="img-tuto-1" />
               </v-col>
-              <v-col cols="5">
+              <v-col cols="12" md="5" lg="5">
                 <img src="@/assets/tuto-3.png" class="img-tuto-2" alt="" />
+              </v-col>
+              <v-col v-if="isMobile" cols="12">
+                <img src="@/assets/tuto-5.png" class="img-tuto-2" alt="" />
               </v-col>
             </div>
             <div>
-              <v-col cols="12">
+              <v-col cols="12" v-if="!isMobile">
                 <img src="@/assets/tuto-5.png" class="img-tuto-2" alt="" />
               </v-col>
             </div>
@@ -694,7 +732,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
   <v-container fluid class="footer-container">
     <v-row class="footer-content">
       <!-- Coluna 1: Branding -->
-      <v-col cols="3" class="footer-column">
+      <v-col cols="12" md="3"  lg="3" class="footer-column">
         <div class="footer-brand">
           <div class="google-logo-anim d-flex align-center">
             <svg viewBox="0 0 120 40" width="120" height="40">
@@ -727,7 +765,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
       <v-divider vertical class="footer-divider" :thickness="1" :opacity="1"></v-divider>
 
       <!-- Coluna 2: Navegação -->
-      <v-col cols="2" class="footer-column">
+      <v-col cols="12" md="2" lg="2" class="footer-column">
         <div class="footer-section">
           <span class="footer-subtitle">Navegação</span>
           <nav class="footer-nav">
@@ -756,7 +794,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
       </v-col>
 
       <!-- Coluna 3: Plataformas -->
-      <v-col cols="2" class="footer-column">
+      <v-col cols="12" md="2" lg="2" class="footer-column">
         <div class="footer-section ">
           <span class="footer-subtitle">Plataformas</span>
           <nav class="footer-nav">
@@ -782,7 +820,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
       <v-divider vertical class="footer-divider" :thickness="1" :opacity="1"></v-divider>
 
       <!-- Coluna 4: Contato -->
-      <v-col cols="4" class="footer-column footer-contact">
+      <v-col cols="12" md="4" lg="4" class="footer-column footer-contact">
         <div class="footer-section">
           <div class="contact-header">
             <v-icon color="#4285f4" >mdi-help-circle-outline</v-icon>
@@ -791,7 +829,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
           <span class="footer-description">
             Dúvidas sobre o cadastro ou o código do facilitador?
           </span>
-          <v-btn class="contact-btn d-flex align-center" href="https://wa.me/5598947008229" target="_blank">
+          <v-btn class="contact-btn d-flex align-center" href="https://wa.me/5598974008229" target="_blank">
             <v-icon class="px-3" size="18">mdi-email-outline</v-icon>
             <span class="">Contactar</span>
           </v-btn>
@@ -802,12 +840,12 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
     <!-- Footer Bottom -->
     <v-divider class="footer-bottom-divider" :thickness="1" :opacity="1"></v-divider>
     <v-row class="footer-bottom">
-      <v-col cols="12" class="d-flex justify-space-between align-center">
+      <v-col cols="12" class="d-flex justify-space-between align-center" :class="isMobile ? 'flex-column ga-4' : ''"  :style="{lineHeight: isMobile ? 1.5 : 1}">
         <span class="footer-copyright text-uppercase"
           >© 2026 Nimbus Vanguards • Community Driven</span
         >
         <v-spacer></v-spacer>
-        <div class="footer-bottom-links">
+        <div class="footer-bottom-links" :class="isMobile ? 'w-100 text-justify' : ''">
           <span>
             Disclaimer: Este site é uma iniciativa educacional independente conduzida por um facilitador e não possui vínculo oficial, societário ou de representação direta com o Google LLC ou suas subsidiárias.
           </span>
