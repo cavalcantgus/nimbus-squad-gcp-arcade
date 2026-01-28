@@ -1174,7 +1174,7 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
   text-transform: uppercase;
   letter-spacing: 0.4px;
   transition: all 0.25s ease;
-  cursor: default;
+  cursor: default; 
 }
 
 .badge-skill:hover {
