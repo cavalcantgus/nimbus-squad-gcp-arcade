@@ -227,7 +227,7 @@ export default {
         <div class="partner-card px-8 py-8 d-flex flex-column justify-space-between">
           <v-row>
             <v-col cols="auto">
-              <img class="logo" src="/public/img/image.png" alt="" />
+              <img class="logo" src="@/assets/image.png" alt="" />
             </v-col>
             <v-col cols="auto" class="d-flex align-center text-uppercase ga-2">
               <span style="color: #0000ff" class="text-meta font-weight-bold text-white"
@@ -389,7 +389,7 @@ export default {
           <div class="facilitator-avatar-wrapper">
             <img
               class="facilitator-avatar"
-              src="/public/img/Design sem nome (2).png"
+              src="@/assets/Design sem nome (2).png"
               alt="Marcelo Cavalcanti"
             />
           </div>
@@ -412,23 +412,23 @@ export default {
     </v-row>
     <v-row class="d-flex justify-center">
       <v-col cols="6" sm="4" md="2" class="badge-col">
-        <img src="/public/img/badge-1.png" alt="Google Cloud Badge" class="badge" />
+        <img src="@/assets/badge-1.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
 
       <v-col cols="6" sm="4" md="2" class="badge-col">
-        <img src="/public/img/badge-2.png" alt="Google Cloud Badge" class="badge" />
+        <img src="@/assets/badge-2.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
 
       <v-col cols="6" sm="4" md="2" class="badge-col">
-        <img src="/public/img/certificate.png" alt="Google Cloud Certificate" class="certificate" />
+        <img src="@/assets/certificate.png" alt="Google Cloud Certificate" class="certificate" />
       </v-col>
 
       <v-col cols="6" sm="4" md="2" class="badge-col">
-        <img src="/public/img/badge-3.png" alt="Google Cloud Badge" class="badge" />
+        <img src="@/assets/badge-3.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
 
       <v-col cols="6" sm="4" md="2" class="badge-col">
-        <img src="/public/img/badge-4.png" alt="Google Cloud Badge" class="badge" />
+        <img src="@/assets/badge-4.png" alt="Google Cloud Badge" class="badge" />
       </v-col>
     </v-row>
   </v-container>
@@ -552,10 +552,10 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
       </v-col>
       <v-col cols="6" class="">
         <v-col cols="12">
-          <img src="/public/img/tuto-1.png" alt="" class="img-tuto-1" />
+          <img src="@/assets/tuto-1.png" alt="" class="img-tuto-1" />
         </v-col>
         <v-col cols="8" class="">
-          <img src="/public/img/tuto-2.png" class="img-tuto-2" alt="" />
+          <img src="@/assets/tuto-2.png" class="img-tuto-2" alt="" />
 
           <!-- <div class="tuto-card">
                 <div class="d-flex ga-3">
@@ -671,15 +671,15 @@ A orientação oficial é que seja criada uma conta <strong>NOVA</strong>, exclu
           <v-col cols="6" class="align-center pa-0">
             <div class="d-flex align-center">
               <v-col cols="7" class="">
-                <img src="/public/img/tuto-4.png" alt="" class="img-tuto-1" />
+                <img src="@/assets/tuto-4.png" alt="" class="img-tuto-1" />
               </v-col>
               <v-col cols="5">
-                <img src="/public/img/tuto-3.png" class="img-tuto-2" alt="" />
+                <img src="@/assets/tuto-3.png" class="img-tuto-2" alt="" />
               </v-col>
             </div>
             <div>
               <v-col cols="12">
-                <img src="/public/img/tuto-5.png" class="img-tuto-2" alt="" />
+                <img src="@/assets/tuto-5.png" class="img-tuto-2" alt="" />
               </v-col>
             </div>
           </v-col>
