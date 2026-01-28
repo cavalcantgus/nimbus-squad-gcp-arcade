@@ -1,13 +1,13 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import { nextTick } from 'vue'
 
 const routes = [
+  { path: "/", redirect: "/home" },
   { path: "/home", name: "Home", component: () => import("@/pages/HomePage.vue") },
-  
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   scrollBehavior: async (to) => {
     if (to.hash) {
